@@ -98,7 +98,7 @@ class ItemController extends Controller
                     $item->image="images/items/".$file_name;
             }
             $item->save();
-            return redirect()->route('backend.items.index');
+            return redirect()->route('backend.items.index')->with('success','Item update successfully');
     }
 
     /**
