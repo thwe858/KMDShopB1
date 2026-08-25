@@ -7,7 +7,7 @@
 @endif
      <div class="container-fluid px-4">
                         <h1 class="mt-4">Item</h1>
-                        <a href="{{route('backend.items.create')}}" 
+                        <a href="{{route('backend.payments.create')}}" 
                         class="btn btn-primary float-end">Create Item</a>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="{{route('backend.dashboard')}}">Dashboard</a></li>
@@ -53,7 +53,7 @@
                                     @endforeach
                                    </tbody>
                                 </table>
-                                
+                                {{$payments->links()}}
                             </div>
                         </div>
                     </div>
@@ -91,7 +91,7 @@
             $('tbody').on('click','.delete',function(){
                 let id=$(this).data('id');
                 //console.log(id);
-                $('#deleteForm').attr('action',`items/${id}`);
+                $('#deleteForm').attr('action',`payments/${id}`);
                 $('#deleteModal').modal('show');
             })
         })
