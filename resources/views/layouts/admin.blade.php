@@ -52,6 +52,14 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Item
                             </a>
+                            <a class="nav-link" href="{{route('backend.items.index')}}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Category
+                            </a>
+                            <a class="nav-link" href="{{route('backend.payments.index')}}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Payment
+                            </a>
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
