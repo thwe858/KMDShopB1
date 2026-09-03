@@ -5,21 +5,27 @@
         <section class="py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
-                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{$item->image}}" alt="..." /></div>
+                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0"src="{{ asset($item->image) }}"alt="{{ $item->name }}"></div>
                     <div class="col-md-6">
                         <div class="small mb-1">Code No:{{$item->code_no}}</div>
                         <h1 class="display-5 fw-bolder">{{$item->name}}</h1>
                         <div class="fs-5 mb-5">
-                            <!-- <span class="text-decoration-line-through">$45.00</span> -->
-                            <span>{{$item->price}}</span>
-                        </div>
+                            @if($item->discount>0)
+                            <span class="text-decoration-line-through">{{$item->price}}</span>
+                            {{$item->price-($item->price*($item->discount/100))}}MMK
+                            @else
+                                {{$item->price}}MMK
+                            @endif
+                        
                         <p class="lead">{{$item->description}}</p>
                         <div class="d-flex">
-                            <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                            <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                                <i class="bi-cart-fill me-1"></i>
-                                Add to cart
-                            </button>
+                            <input class="form-control text-center me-3 qty" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
+                           <button class="btn btn-sm btn-dark addToCart" 
+                                        data-id="{{$item->id}}"
+                                        data-name="{{$item->name}}"
+                                        data-price="{{$item->price}}"
+                                        data-discount="{{$item->discount}}"
+                                        date-image="{{$item->image}}">Add to Cart</button>
                         </div>
                     </div>
                 </div>

@@ -26,7 +26,12 @@
                                     <!-- Product name-->
                                     <h5 class="fw-bolder">{{$item->name}}</h5>
                                     <!-- Product price-->
-                                    {{$item->price}} MMK
+                                     @if($item->discount>0)
+                                    <span class="text-decoration-line-through">{{$item->price}}</span>
+                                    {{$item->price-($item->price*($item->discount/100))}}MMK
+                                    @else
+                                        {{$item->price}}MMK
+                                    @endif
                                 </div>
                             </div>
                             <!-- Product actions-->
@@ -34,7 +39,13 @@
                                 <div class="text-center row">
                                     <div class="d-flex justify-content-between align-item-center mt-2">
                                           <a class="btn btn-sm btn-outline-dark " href="{{route('shop-item',$item->id)}}">Detail</a>
-                                        <button class="btn btn-sm btn-dark">Add to Cart</button>
+                                        <input type="hidden" name='' class="qty" value='1'>
+                                          <button class="btn btn-sm btn-dark addToCart" 
+                                        data-id="{{$item->id}}"
+                                        data-name="{{$item->name}}"
+                                        data-price="{{$item->price}}"
+                                        data-discount="{{$item->discount}}"
+                                        data-image="{{$item->image}}">Add to Cart</button>
                                     </div>
                                   
                                 </div>
